@@ -16,7 +16,11 @@ const App = ({store}) => {
   return (
     <div>
       <h2>Anecdotes</h2>
-      {anecdotes.map(anecdote =>
+      {anecdotes.sort(function(a, b) {
+        var one = a.votes
+        var two = b.votes
+        return one > two ? -1 : 1
+      }).map(anecdote =>
         <div key={anecdote.id}>
           <div>
             {anecdote.content}
