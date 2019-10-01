@@ -1,5 +1,6 @@
 import React from 'react'
 import { createAnecdote } from '../reducers/anecdoteReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
 const AnecdoteForm = (props) => {
   const addAnecdote = (event) => {
@@ -9,6 +10,10 @@ const AnecdoteForm = (props) => {
     props.store.dispatch(
       createAnecdote(content)
     )
+    props.store.dispatch(
+      setNotification(content)
+    )
+    setTimeout(() => props.store.dispatch(setNotification("")), 4000)
   }
   return (
     <form onSubmit={addAnecdote}>
